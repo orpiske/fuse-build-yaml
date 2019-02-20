@@ -22,7 +22,7 @@
 
   <groupId>com.redhat.fuse</groupId>
   <artifactId>fuse-build-yaml</artifactId>
-  <version>7.3.0.redhat-SNAPSHOT</version>
+  <version>7.3.0.fuse-730002</version>
   <packaging>pom</packaging>
   <name>Fuse Build YAML</name>
   <description>Fuse Build YAML descriptor generator</description>
@@ -234,15 +234,15 @@
     <syndesis.buildCommand>1</syndesis.buildCommand>
 
     <!-- DV project -->
-    <version.teiid>1</version.teiid>
-    <teiid.tag>DUMMY-TAG-0.0.0</teiid.tag>
-    <teiid.fetch.scmUrl>1</teiid.fetch.scmUrl>
-    <teiid.push.scmUrl>1</teiid.push.scmUrl>
-    <teiid.buildCommand>1</teiid.buildCommand>
-    <version.teiid-springboot>1</version.teiid-springboot>
-    <teiid-spring-boot.tag>DUMMY-TAG-0.0.0</teiid-spring-boot.tag>
-    <teiid-spring-boot.fetch.scmUrl>1</teiid-spring-boot.fetch.scmUrl>
-    <teiid-spring-boot.push.scmUrl>1</teiid-spring-boot.push.scmUrl>
+    <version.teiid>12.1.0.fuse-730003</version.teiid>
+    <teiid.tag>master</teiid.tag>
+    <teiid.fetch.scmUrl>git%40github.com%3Ateiid%2Fteiid.git</teiid.fetch.scmUrl>
+    <teiid.push.scmUrl>git%40github.com%3Ajboss-fuse%2Fteiid.git</teiid.push.scmUrl>
+    <teiid.buildCommand>mvn+-e+-V+-B+-DskipTests+-DfailIfNoTests%3Dfalse+-Dtest%3Dfalse+-Pcore-release+clean+install++-Pcore-release+-Dcheckstyle.skip+-Dgpg.skip</teiid.buildCommand>
+    <version.teiid-springboot>1.0.3.fuse-730002</version.teiid-springboot>
+    <teiid-spring-boot.tag>master</teiid-spring-boot.tag>
+    <teiid-spring-boot.fetch.scmUrl>git%40github.com%3Ateiid%2Fteiid-spring-boot.git</teiid-spring-boot.fetch.scmUrl>
+    <teiid-spring-boot.push.scmUrl>git%40github.com%3Ajboss-fuse%2Fteiid-spring-boot.git</teiid-spring-boot.push.scmUrl>
     <teiid-spring-boot.buildCommand>1</teiid-spring-boot.buildCommand>
 
   </properties>
