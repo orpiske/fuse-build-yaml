@@ -22,7 +22,7 @@
 
   <groupId>com.redhat.fuse</groupId>
   <artifactId>fuse-build-yaml</artifactId>
-  <version>7.3.0.redhat-SNAPSHOT</version>
+  <version>7.3.0.fuse-730013</version>
   <packaging>pom</packaging>
   <name>Fuse Build YAML</name>
   <description>Fuse Build YAML descriptor generator</description>
@@ -47,14 +47,14 @@
     <version.camel>2.21.0.fuse-000096</version.camel>
     <version.camel.extra>2.21.0.fuse-000073</version.camel.extra>
     <version.fuse.extras.distro>7.2.0.fuse-720046</version.fuse.extras.distro>
-    <version.cxf>3.1.11.fuse-000265</version.cxf>
+    <version.cxf>3.2.7.fuse-730021</version.cxf>
     <version.fabric8>3.0.8.fuse-000051</version.fabric8>
     <version.fabric8.maven.plugin>3.5.33.fuse-000075</version.fabric8.maven.plugin>
     <version.bom.fuse>7.0.1.fuse-000002</version.bom.fuse>
-    <version.karaf>4.2.0.fuse-000262</version.karaf>
+    <version.karaf>4.2.0.fuse-730023</version.karaf>
     <version.bom.wildfly.camel>5.1.0.fuse-000071</version.bom.wildfly.camel>
     <version.fusesource.camel.sap>7.0.1.fuse-000002</version.fusesource.camel.sap>
-    <karaf.plugin.version>4.2.0.fuse-000262</karaf.plugin.version>
+    <karaf.plugin.version>4.2.0.fuse-730023</karaf.plugin.version>
 
     <application-templates.version>2.1.fuse-000091</application-templates.version>
     <fuse-bom.version>7.1.0.fuse-000005</fuse-bom.version>
@@ -62,11 +62,11 @@
     <version.hawtio.online>1.0.0.fuse-000054</version.hawtio.online>
     <version.hawtio.integration>1.0.0.fuse-000034</version.hawtio.integration>
 
-    <version.kubernetes.model>2.0.9.fuse-000020</version.kubernetes.model>
-    <version.kubernetes.client>3.0.3.fuse-000056</version.kubernetes.client>
+    <version.kubernetes.model>2.0.10.fuse-730013</version.kubernetes.model>
+    <version.kubernetes.client>3.1.12.fuse-730016</version.kubernetes.client>
 
     <version.application.templates>2.1.fuse-000087</version.application.templates>
-    <version.cxf.xjc-utils>3.1.1.fuse-000118</version.cxf.xjc-utils>
+    <version.cxf.xjc-utils>3.2.4.fuse-730014</version.cxf.xjc-utils>
     <version.ipaas.quickstarts>2.2.0.fuse-000098</version.ipaas.quickstarts>
     <version.spring-cloud-kubernetes>0.1.6.fuse-000056</version.spring-cloud-kubernetes>
     <version.wsdl2rest>0.7.0.fuse-000071</version.wsdl2rest>
@@ -103,17 +103,17 @@
     <spring-boot-cxf-jaxws.version>1.0.0.fuse-710004</spring-boot-cxf-jaxws.version>
 
     <!-- Tag and SCM info -->
-    <karaf.tag>DUMMY-TAG-0.0.0</karaf.tag>
-    <karaf.fetch.scmUrl>1</karaf.fetch.scmUrl>
-    <karaf.push.scmUrl>1</karaf.push.scmUrl>
+    <karaf.tag>4.2.x.redhat-7-x</karaf.tag>
+    <karaf.fetch.scmUrl>git%40github.com%3Ajboss-fuse%2Fkaraf.git</karaf.fetch.scmUrl>
+    <karaf.push.scmUrl>git%40github.com%3Ajboss-fuse%2Fkaraf.git</karaf.push.scmUrl>
     <karaf.buildCommand>1</karaf.buildCommand>
-    <cxf-xjc-utils.tag>DUMMY-TAG-0.0.0</cxf-xjc-utils.tag>
-    <cxf-xjc-utils.fetch.scmUrl>1</cxf-xjc-utils.fetch.scmUrl>
-    <cxf-xjc-utils.push.scmUrl>1</cxf-xjc-utils.push.scmUrl>
+    <cxf-xjc-utils.tag>3.2.x.redhat-7-x</cxf-xjc-utils.tag>
+    <cxf-xjc-utils.fetch.scmUrl>git%40github.com%3Ajboss-fuse%2Fcxf-xjc-utils.git</cxf-xjc-utils.fetch.scmUrl>
+    <cxf-xjc-utils.push.scmUrl>git%40github.com%3Ajboss-fuse%2Fcxf-xjc-utils.git</cxf-xjc-utils.push.scmUrl>
     <cxf-xjc-utils.buildCommand>1</cxf-xjc-utils.buildCommand>
-    <cxf.tag>DUMMY-TAG-0.0.0</cxf.tag>
-    <cxf.fetch.scmUrl>1</cxf.fetch.scmUrl>
-    <cxf.push.scmUrl>1</cxf.push.scmUrl>
+    <cxf.tag>3.2.x.redhat-7-x</cxf.tag>
+    <cxf.fetch.scmUrl>git%40github.com%3Ajboss-fuse%2Fcxf.git</cxf.fetch.scmUrl>
+    <cxf.push.scmUrl>git%40github.com%3Ajboss-fuse%2Fcxf.git</cxf.push.scmUrl>
     <cxf.buildCommand>1</cxf.buildCommand>
     <camel.tag>DUMMY-TAG-0.0.0</camel.tag>
     <camel.fetch.scmUrl>1</camel.fetch.scmUrl>
@@ -147,13 +147,13 @@
     <fuse-karaf.fetch.scmUrl>1</fuse-karaf.fetch.scmUrl>
     <fuse-karaf.push.scmUrl>1</fuse-karaf.push.scmUrl>
     <fuse-karaf.buildCommand>1</fuse-karaf.buildCommand>
-    <kubernetes-model.tag></kubernetes-model.tag>
-    <kubernetes-model.fetch.scmUrl>1</kubernetes-model.fetch.scmUrl>
-    <kubernetes-model.push.scmUrl>1</kubernetes-model.push.scmUrl>
+    <kubernetes-model.tag>2.0.x.redhat-7-x</kubernetes-model.tag>
+    <kubernetes-model.fetch.scmUrl>git%40github.com%3Ajboss-fuse%2Fkubernetes-model.git</kubernetes-model.fetch.scmUrl>
+    <kubernetes-model.push.scmUrl>git%40github.com%3Ajboss-fuse%2Fkubernetes-model.git</kubernetes-model.push.scmUrl>
     <kubernetes-model.buildCommand>1</kubernetes-model.buildCommand>
-    <kubernetes-client.tag>DUMMY-TAG-0.0.0</kubernetes-client.tag>
-    <kubernetes-client.fetch.scmUrl>1</kubernetes-client.fetch.scmUrl>
-    <kubernetes-client.push.scmUrl>1</kubernetes-client.push.scmUrl>
+    <kubernetes-client.tag>3.1.x.redhat-7-x</kubernetes-client.tag>
+    <kubernetes-client.fetch.scmUrl>git%40github.com%3Ajboss-fuse%2Fkubernetes-client.git</kubernetes-client.fetch.scmUrl>
+    <kubernetes-client.push.scmUrl>git%40github.com%3Ajboss-fuse%2Fkubernetes-client.git</kubernetes-client.push.scmUrl>
     <kubernetes-client.buildCommand>1</kubernetes-client.buildCommand>
     <spring-cloud-kubernetes.tag>DUMMY-TAG-0.0.0</spring-cloud-kubernetes.tag>
     <spring-cloud-kubernetes.fetch.scmUrl>1</spring-cloud-kubernetes.fetch.scmUrl>
