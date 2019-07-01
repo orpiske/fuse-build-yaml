@@ -44,7 +44,7 @@ builds:
   buildPodMemory: 12
   customPmeParameters:
     - ${syndesis.pme.options}
-  buildScript: > 
+  buildScript: >
     export MAVEN_OPTS=\"-Xmx2048m\"
 
     export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
@@ -63,7 +63,7 @@ builds:
 
     sed -i 's#https:#http:#g' app/ui-react/yarn.lock
 
-    mvn -e -V -B -DskipTests -DfailIfNoTests=false -DskipITs=true -Dtest=false -Daddrepository -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -DyarnRegistry=$REG -Dproxy-user="${buildContentId}+tracking" -Dproxy-port="${proxyPort}" -Dyarn-verbose="--verbose" -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false clean deploy -f app/pom.xml
+    mvn --quiet -e -V -B -DskipTests -DfailIfNoTests=false -DskipITs=true -Dtest=false -Daddrepository -Dproxy-server=$REG -Dcustom-registry=$REG -DnpmRegistryURL2=$REG -DyarnRegistry=$REG -Dproxy-user="${buildContentId}+tracking" -Dproxy-port="${proxyPort}" -Dyarn-verbose="--verbose" -DnpmDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/npm/ -DyarnRegistry=$REG -DyarnDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/yarn/dist/ -DnodeDownloadRoot=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/dist/ -Dsass-binary-site=http://download-node-02.eng.bos.redhat.com/rcm-guest/staging/fuse/npm/node-sass -DyarnInheritsProxyConfigFromMaven=false clean deploy -f app/pom.xml
   dependencies:
   - atlasmap-1.40.0
 
