@@ -279,6 +279,16 @@
       </resource>
     </resources>
 
+    <pluginManagement>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.0.0</version>
+          </plugin>
+        </plugins>
+      </pluginManagement>
+
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -349,67 +359,6 @@
         </dependencies>
     </plugin>
 
-    <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <id>attach-artifacts</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>attach-artifact</goal>
-            </goals>
-            <configuration>
-              <artifacts>
-                <!-- Fuse and FIS Original (template) -->
-                <artifact>
-                  <file>target/extra-resources/${yaml.name}.yaml</file>
-                  <type>yaml</type>
-                  <classifier>fuse-fis-yaml</classifier>
-                </artifact>
-                <!-- Fuse and FIS Fixed -->
-                <artifact>
-                  <file>target/extra-resources/${yaml.name}.yaml.modified</file>
-                  <type>yaml</type>
-                  <classifier>fuse-fis-modified-yaml</classifier>
-                </artifact>
-                <!-- Fuse and FIS Deptree -->
-                <artifact>
-                  <file>target/extra-resources/${yaml.name}.yaml.html</file>
-                  <type>html</type>
-                  <classifier>fuse-fis-deptree</classifier>
-                </artifact>
-
-                <artifact>
-                  <file>target/extra-resources/${yaml.name}-staging.yaml</file>
-                  <type>yaml</type>
-                  <classifier>staging-yaml</classifier>
-                </artifact>
-                <!-- Fuse and FIS Fixed -->
-                <artifact>
-                  <file>target/extra-resources/${yaml.name}-staging.yaml.modified</file>
-                  <type>yaml</type>
-                  <classifier>staging-modified-yaml</classifier>
-                </artifact>
-                <!-- Fuse and FIS Deptree -->
-                <artifact>
-                  <file>target/extra-resources/${yaml.name}-staging.yaml.html</file>
-                  <type>html</type>
-                  <classifier>staging-deptree</classifier>
-                </artifact>
-
-                <artifact>
-                  <file>target/extra-resources/release_fis_quickstarts.sh</file>
-                  <type>sh</type>
-                  <classifier>sh</classifier>
-                </artifact>
-              </artifacts>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
       <plugin>
         <groupId>com.coderplus.maven.plugins</groupId>
         <artifactId>copy-rename-maven-plugin</artifactId>
@@ -478,4 +427,347 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+      <profile>
+        <id>fusefis</id>
+        <activation>
+          <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+          <yaml.name>fusefis</yaml.name>
+        </properties>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>build-helper-maven-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>attach-artifacts</id>
+                  <phase>generate-resources</phase>
+                  <goals>
+                    <goal>attach-artifact</goal>
+                  </goals>
+                  <configuration>
+                    <artifacts>
+                      <!-- Fuse and FIS Original (template) -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml</file>
+                        <type>yaml</type>
+                        <classifier>fuse-fis-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>fuse-fis-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.html</file>
+                        <type>html</type>
+                        <classifier>fuse-fis-deptree</classifier>
+                      </artifact>
+
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml</file>
+                        <type>yaml</type>
+                        <classifier>staging-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>staging-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.html</file>
+                        <type>html</type>
+                        <classifier>staging-deptree</classifier>
+                      </artifact>
+
+                      <artifact>
+                        <file>target/extra-resources/release_fis_quickstarts.sh</file>
+                        <type>sh</type>
+                        <classifier>sh</classifier>
+                      </artifact>
+                    </artifacts>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>
+
+      <profile>
+        <id>core-sb1</id>
+        <activation>
+          <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+          <yaml.name>core-sb1</yaml.name>
+        </properties>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>build-helper-maven-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>attach-artifacts</id>
+                  <phase>generate-resources</phase>
+                  <goals>
+                    <goal>attach-artifact</goal>
+                  </goals>
+                  <configuration>
+                    <artifacts>
+                      <!-- Fuse and FIS Original (template) -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.html</file>
+                        <type>html</type>
+                        <classifier>${yaml.name}-deptree</classifier>
+                      </artifact>
+
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-staging-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-staging-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.html</file>
+                        <type>html</type>
+                        <classifier>${yaml.name}-staging-deptree</classifier>
+                      </artifact>
+                    </artifacts>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>
+
+      <profile>
+        <id>dv</id>
+        <activation>
+          <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+          <yaml.name>dv</yaml.name>
+        </properties>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>build-helper-maven-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>attach-artifacts</id>
+                  <phase>generate-resources</phase>
+                  <goals>
+                    <goal>attach-artifact</goal>
+                  </goals>
+                  <configuration>
+                    <artifacts>
+                      <!-- Fuse and FIS Original (template) -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.html</file>
+                        <type>html</type>
+                        <classifier>${yaml.name}-deptree</classifier>
+                      </artifact>
+
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-staging-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-staging-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.html</file>
+                        <type>html</type>
+                        <classifier>${yaml.name}-staging-deptree</classifier>
+                      </artifact>
+                    </artifacts>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>
+
+      <profile>
+        <id>ipaas</id>
+        <activation>
+          <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+          <yaml.name>ipaas</yaml.name>
+        </properties>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>build-helper-maven-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>attach-artifacts</id>
+                  <phase>generate-resources</phase>
+                  <goals>
+                    <goal>attach-artifact</goal>
+                  </goals>
+                  <configuration>
+                    <artifacts>
+                      <!-- Fuse and FIS Original (template) -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.html</file>
+                        <type>html</type>
+                        <classifier>${yaml.name}-deptree</classifier>
+                      </artifact>
+
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-staging-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-staging-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.html</file>
+                        <type>html</type>
+                        <classifier>${yaml.name}-staging-deptree</classifier>
+                      </artifact>
+                    </artifacts>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>
+
+      <profile>
+        <id>springboot2</id>
+        <activation>
+          <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+          <yaml.name>springboot2</yaml.name>
+        </properties>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>build-helper-maven-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>attach-artifacts</id>
+                  <phase>generate-resources</phase>
+                  <goals>
+                    <goal>attach-artifact</goal>
+                  </goals>
+                  <configuration>
+                    <artifacts>
+                      <!-- Fuse and FIS Original (template) -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}.yaml.html</file>
+                        <type>html</type>
+                        <classifier>${yaml.name}-deptree</classifier>
+                      </artifact>
+
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-staging-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Fixed -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.modified</file>
+                        <type>yaml</type>
+                        <classifier>${yaml.name}-staging-modified-yaml</classifier>
+                      </artifact>
+                      <!-- Fuse and FIS Deptree -->
+                      <artifact>
+                        <file>target/extra-resources/${yaml.name}-staging.yaml.html</file>
+                        <type>html</type>
+                        <classifier>${yaml.name}-staging-deptree</classifier>
+                      </artifact>
+                    </artifacts>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>
+    </profiles>
 </project>
