@@ -104,7 +104,7 @@ builds:
   dependencies:
   - camel-2.21.0-${version.fuse.prefix}
 
-- name: fuse-extras-${version.fuse.prefix}-${version.fuse.prefix}
+- name: fuse-extras-distro-${version.fuse.prefix}-${version.fuse.prefix}
   project: jboss-fuse/fuse-extras-distro
     #fetchScmUrl: ${fuse-extras-distro.fetch.scmUrl}
     #pushScmUrl: ${fuse-extras-distro.push.scmUrl}
