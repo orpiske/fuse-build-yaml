@@ -1,0 +1,77 @@
+product:
+  name: Red Hat Fuse
+  abbreviation: Fuse-and-FIS
+  stage: ${build.milestone}
+  issueTrackerUrl: http://issues.jboss.org/browse/ENTESB
+version: ${version.fuse.prefix}
+milestone: ${build.milestone}
+group: Red Hat Fuse - Operators ${version.fuse.project} ${build.milestone}
+defaultBuildParameters:
+  environmentId: 27
+
+builds:
+- name: apicurito-operator-${version.fuse.prefix}
+  project: jboss-fuse/apicurio-operators
+    #fetchScmUrl: ${karaf.fetch.scmUrl}
+    #pushScmUrl: ${karaf.push.scmUrl}
+    #tag: karaf-${version.karaf}
+    #buildCommand: ${karaf.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/apicurio-operators.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/apicurio-operators.git
+  scmRevision: master
+  environmentId: 27
+  buildScript: >
+    go build -mod=vendor -o /go/bin/apicurio-operator cmd/manager/main.go
+  # pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${apicurito-operator.pme.options}
+
+- name: camel-k-${version.fuse.prefix}
+    #fetchScmUrl: ${camel-k.fetch.scmUrl}
+    #pushScmUrl: ${camel-k.push.scmUrl}
+    #tag: camel-k-${version.camel-k}
+    #buildCommand: ${camel-k.buildCommand}
+  project: jboss-fuse/camel-k
+  scmUrl: git+ssh://code.engineering.redhat.com/jboss-fuse/camel-k.git
+  externalScmUrl: ssh://git@github.com/jboss-fuse/camel-k.git
+  scmRevision: camel-k-${version.camel-k}
+  environmentId: 27
+  pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  buildScript: >
+    make codegen set-version VERSION=1.0 RUNTIME_VERSION=${version.camel-k-runtime} CAMEL_VERSION=${version.camel} \
+        BASE_IMAGE=registry.redhat.io/fuse7/fuse-java-openshift:1.6 IMAGE_NAME=registry.redhat.io/fuse7-tech-preview/fuse-camel-k-rhel7-operator \
+        CAMEL_VERSION_CONSTRAINT=${version.camel} ; ./script/embed_resources.sh deploy; make build-kamel; make cross-compile VERSION=1.0
+  customPmeParameters:
+    - ${camel-k.pme.options}
+  dependencies:
+    - camel-k-runtime-1.0.1-${version.fuse.prefix}
+
+- name: hawtio-operator-${version.fuse.prefix}
+  project: jboss-fuse/apicurio-operators
+    #fetchScmUrl: ${karaf.fetch.scmUrl}
+    #pushScmUrl: ${karaf.push.scmUrl}
+    #tag: karaf-${version.karaf}
+    #buildCommand: ${karaf.buildCommand}
+  scmUrl: git+ssh://code.engineering.redhat.com/hawtio/hawtio-operator.git
+  externalScmUrl: ssh://git@github.com/hawtio/hawtio-operator.git
+  scmRevision: 56adf2eed21670f408f87658cd2c0e4c90226056
+  environmentId: 27
+  buildScript: >
+    go build -o /hawtio-operator -ldflags \"-X hawtio.ImageRepository=registry.redhat.io/fuse7-tech-preview/fuse-console -X 'hawtio.LegacyServingCertificateMountVersion=< 1.5.0'\" ./cmd/manager/main.go"
+  # pigYamlMetadata: Fuse dev build ${build.url} Fuse ${yaml.name} yaml config ${project.version}
+  customPmeParameters:
+    - ${hawtio-operator.pme.options}
+
+outputPrefixes:
+  releaseFile: fuse-test
+  releaseDir: fuse-test
+flow:
+  #licensesGeneration: gen.downloadFrom 'karaf' matching '.*license\.zip'
+  #licensesGeneration: gen.generate()
+  #repositoryGeneration: gen.downloadFrom 'karaf' matching '.*-m2repo\.zip'
+  #javadocGeneration: gen.downloadFrom 'karaf' matching '.*javadoc\.zip'
+  #addons:
+  #runtimeDependenciesAnalyzer:
+  #  downloadFrom: 'WildFly-Swarm'
+  #  matching: '.*runtime-dependencies\.zip'
+  #  referenceBuild: 'WildFly-Swarm'
